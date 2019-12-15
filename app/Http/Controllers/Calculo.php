@@ -9,14 +9,14 @@ class Calculo extends Controller{
         return -> devolve o resultado para a calculadora
     */
     public function calcular(Request $request){
-        return $this->resolveCalculo($request->json()->all());
+        return $this->resolveCalculo(str_replace(",", ".", $request->json()->all()));
     }
     /*
         $request -> request que veio da calculadora
         return -> devolve o resultado para a calculadora
     */
     public function porcentagem(Request $request){
-        $req = $request->json()->all();
+        $req = str_replace(",", ".", $request->json()->all());
         $ultimoValor = array_pop($req);
         array_pop($req);
         $resultado = $this->resolveCalculo($req);
