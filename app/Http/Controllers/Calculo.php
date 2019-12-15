@@ -16,9 +16,9 @@ class Calculo extends Controller{
         return -> devolve o resultado para a calculadora
     */
     public function porcentagem(Request $request){
-        $resultado = $this->somaValores($request->json()->all());
+        $resultado = $this->resolveCalculo($request->json()->all());
         $resultado -= $request->json()->get(count($request->json())-1);
-        return abs(($resultado * $request->json()->get(count($request->json())-1)) / 100);
+        return ($resultado * $request->json()->get(count($request->json())-1)) / 100;
     }
     /*
         $req-> lista de valores para serem calculados
@@ -34,20 +34,6 @@ class Calculo extends Controller{
                 $calculo = $this->calculaOperado($memoria, $calculo, $num);
                 $memoria = "";
             } else { $memoria = $req[$i]; }
-        }     
-        return $calculo;
-    }
-    /*
-        $req-> lista de valores para serem calculados
-        return -> resultados da soma de todos os valores encontrados em $req
-    */
-    public function somaValores($req){
-        $calculo = 0;
-        $num = $req[0];
-        for($i = 0; $i < count($req); $i++){
-            if (is_numeric($req[$i])){
-                $calculo += $req[$i];
-            }
         }     
         return $calculo;
     }
