@@ -16,9 +16,12 @@ class Calculo extends Controller{
         return -> devolve o resultado para a calculadora
     */
     public function porcentagem(Request $request){
-        $resultado = $this->resolveCalculo($request->json()->all());
-        $resultado -= $request->json()->get(count($request->json())-1);
-        return ($resultado * $request->json()->get(count($request->json())-1)) / 100;
+        $req = $request->json()->all();
+        $ultimoValor = array_pop($req);
+        array_pop($req);
+        $resultado = $this->resolveCalculo($req);
+        if($ultimoValor == 0) $ultimoValor = $resultado;
+        return ($resultado * $ultimoValor) / 100;
     }
     /*
         $req-> lista de valores para serem calculados
