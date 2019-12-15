@@ -1,7 +1,7 @@
 # ProjetoPHP
 Teste técnico
 
-Para funcionar precisa de um servidor PHP, utilizei a versão 7.4.0 nativa do PHP para rodar 
+Para funcionar precisa de um servidor PHP, utilizei o servidor nativo do PHP versão 7.4.0 para rodar 
 
 comandos cmd: 
 
